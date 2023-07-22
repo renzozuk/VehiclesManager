@@ -41,9 +41,11 @@ public class Aircraft extends Airborne{
     public void Accelerate() {
         System.out.println("The " + this.name + " is patiently flying through the sky...");
     }
+
     public int getAutonomy(){
         return this.autonomy;
     }
+
     public String getBody(){
         //return String.valueOf(this.bodyModel);
         if(this.bodyModel == Body.NarrowBody){

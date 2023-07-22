@@ -9,6 +9,7 @@ public class Helicopter extends Airborne {
         this.maxAltitude = maxAltitude;
         this.introducedIn = introducedIn;
     }
+
     @Override
     public void Accelerate() {
         System.out.println("The " + this.name + " is flying through the sky...");
