@@ -18,10 +18,11 @@ public class Program {
 
     static void clrsrc(){
         try {
-            if (System.getProperty("os.name").contains("Windows"))
+            if (System.getProperty("os.name").contains("Windows")){
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            else
+            }else{
                 Runtime.getRuntime().exec("clear");
+            }
         } catch (IOException | InterruptedException ex) {}
     }
 
@@ -63,63 +64,61 @@ public class Program {
                     }while(!(parameters.get(0).toLowerCase().equals("car")) && !(parameters.get(0).toLowerCase().equals("motorcycle")) && !(parameters.get(0).toLowerCase().equals("aircraft")) && !(parameters.get(0).toLowerCase().equals("helicopter")));
                     System.out.print("Insert the name of the vehicle: "); parameters.add(sc.nextLine());
                     System.out.print("Insert the color of the vehicle: "); parameters.add(sc.nextLine());
-                    do{
-                        System.out.print("Insert the weight of the vehicle (in kg): ");
-                        if(parameters.size() == 3){
-                            parameters.add(sc.nextLine());
-                        }else{
-                            parameters.set(3, sc.nextLine());
-                        }
-                    }while(!(parameters.get(parameters.size()-1).startsWith("0")) && !(parameters.get(parameters.size()-1).startsWith("1")) && !(parameters.get(parameters.size()-1).startsWith("2")) && !(parameters.get(parameters.size()-1).startsWith("3")) && !(parameters.get(parameters.size()-1).startsWith("4")) && !(parameters.get(parameters.size()-1).startsWith("5")) && !(parameters.get(parameters.size()-1).startsWith("6")) && !(parameters.get(parameters.size()-1).startsWith("7")) && !(parameters.get(parameters.size()-1).startsWith("8")) && !(parameters.get(parameters.size()-1).startsWith("9")));
-                    do{
-                        System.out.print("Insert the maximum speed of the vehicle (in km/h): ");
-                        if(parameters.size() == 4){
-                            parameters.add(sc.nextLine());
-                        }else{
-                            parameters.set(4, sc.nextLine());
-                        }
-                    }while(!(parameters.get(parameters.size()-1).startsWith("0")) && !(parameters.get(parameters.size()-1).startsWith("1")) && !(parameters.get(parameters.size()-1).startsWith("2")) && !(parameters.get(parameters.size()-1).startsWith("3")) && !(parameters.get(parameters.size()-1).startsWith("4")) && !(parameters.get(parameters.size()-1).startsWith("5")) && !(parameters.get(parameters.size()-1).startsWith("6")) && !(parameters.get(parameters.size()-1).startsWith("7")) && !(parameters.get(parameters.size()-1).startsWith("8")) && !(parameters.get(parameters.size()-1).startsWith("9")));
+                    /*do{
+                    }while(!(parameters.get(parameters.size()-1).startsWith("0")) && !(parameters.get(parameters.size()-1).startsWith("1")) && !(parameters.get(parameters.size()-1).startsWith("2")) && !(parameters.get(parameters.size()-1).startsWith("3")) && !(parameters.get(parameters.size()-1).startsWith("4")) && !(parameters.get(parameters.size()-1).startsWith("5")) && !(parameters.get(parameters.size()-1).startsWith("6")) && !(parameters.get(parameters.size()-1).startsWith("7")) && !(parameters.get(parameters.size()-1).startsWith("8")) && !(parameters.get(parameters.size()-1).startsWith("9")));*/
+                    System.out.print("Insert the weight of the vehicle (in kg): ");
+                    if(parameters.size() == 3){
+                        parameters.add(sc.nextLine());
+                    }else{
+                        parameters.set(3, sc.nextLine());
+                    }
+                    System.out.print("Insert the maximum speed of the vehicle (in km/h): ");
+                    if(parameters.size() == 4){
+                        parameters.add(sc.nextLine());
+                    }else{
+                        parameters.set(4, sc.nextLine());
+                    }
                     if(parameters.get(0).toLowerCase().equals("aircraft") || parameters.get(0).toLowerCase().equals("helicopter")){
-                        do{
-                            System.out.print("Insert the maximum altitude of the airborne (in ft): ");
-                            if(parameters.size() == 5){
-                                parameters.add(sc.nextLine());
-                            }else{
-                                parameters.set(5, sc.nextLine());
-                            }
-                        }while(!(parameters.get(parameters.size()-1).startsWith("0")) && !(parameters.get(parameters.size()-1).startsWith("1")) && !(parameters.get(parameters.size()-1).startsWith("2")) && !(parameters.get(parameters.size()-1).startsWith("3")) && !(parameters.get(parameters.size()-1).startsWith("4")) && !(parameters.get(parameters.size()-1).startsWith("5")) && !(parameters.get(parameters.size()-1).startsWith("6")) && !(parameters.get(parameters.size()-1).startsWith("7")) && !(parameters.get(parameters.size()-1).startsWith("8")) && !(parameters.get(parameters.size()-1).startsWith("9")));
+                        System.out.print("Insert the maximum altitude of the airborne (in ft): ");
+                        if(parameters.size() == 5){
+                            parameters.add(sc.nextLine());
+                        }else{
+                            parameters.set(5, sc.nextLine());
+                        }
                     }
                     if(parameters.get(0).toLowerCase().equals("aircraft")){
-                        do{
-                            System.out.print("Insert the flight autonomy of the aircraft (in km): ");
-                            if(parameters.size() == 6){
-                                parameters.add(sc.nextLine());
-                            }else{
-                                parameters.set(6, sc.nextLine());
-                            }
-                        }while(!(parameters.get(parameters.size()-1).startsWith("0")) && !(parameters.get(parameters.size()-1).startsWith("1")) && !(parameters.get(parameters.size()-1).startsWith("2")) && !(parameters.get(parameters.size()-1).startsWith("3")) && !(parameters.get(parameters.size()-1).startsWith("4")) && !(parameters.get(parameters.size()-1).startsWith("5")) && !(parameters.get(parameters.size()-1).startsWith("6")) && !(parameters.get(parameters.size()-1).startsWith("7")) && !(parameters.get(parameters.size()-1).startsWith("8")) && !(parameters.get(parameters.size()-1).startsWith("9")));
+                        System.out.print("Insert the flight autonomy of the aircraft (in km): ");
+                        if(parameters.size() == 6){
+                            parameters.add(sc.nextLine());
+                        }else{
+                            parameters.set(6, sc.nextLine());
+                        }
                         do{
                             System.out.print("Insert the type of the body of the aircraft (Narrow Body or Wide Body): "); parameters.add(sc.nextLine());
                         }while(!(parameters.get(parameters.size()-1).toLowerCase().equals("narrowbody")) && !(parameters.get(parameters.size()-1).toLowerCase().equals("narrow body")) && !(parameters.get(parameters.size()-1).toLowerCase().equals("nb")) && !(parameters.get(parameters.size()-1).toLowerCase().equals("widebody")) && !(parameters.get(parameters.size()-1).toLowerCase().equals("wide body")) && !(parameters.get(parameters.size()-1).toLowerCase().equals("wb")));
                     }
                     System.out.print("Insert the date that the vehicle was introduced in: "); parameters.add(sc.nextLine());
-                    switch(parameters.get(0).toLowerCase()){
-                        case "car":
-                            vehicles.add(new Car(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), parameters.get(5)));
-                            System.out.println("The car was successfully added to the system.");
-                            break;
-                        case "motorcycle":
-                            vehicles.add(new Motorcycle(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), parameters.get(5)));
-                            System.out.println("The motorcycle was successfully added to the system.");
-                            break;
-                        case "aircraft":
-                            vehicles.add(new Aircraft(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), Integer.parseInt(parameters.get(5)), Integer.parseInt(parameters.get(6)), parameters.get(7), parameters.get(8)));
-                            System.out.println("The aircraft was successfully added to the system.");
-                            break;
-                        case "helicopter":
-                            vehicles.add(new Helicopter(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), Integer.parseInt(parameters.get(5)), parameters.get(6)));
-                            System.out.println("The helicopter was successfully added to the system.");
-                            break;
+                    try{
+                        switch(parameters.get(0).toLowerCase()){
+                            case "car":
+                                vehicles.add(new Car(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), parameters.get(5)));
+                                System.out.println("The car was successfully added to the system.");
+                                break;
+                            case "motorcycle":
+                                vehicles.add(new Motorcycle(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), parameters.get(5)));
+                                System.out.println("The motorcycle was successfully added to the system.");
+                                break;
+                            case "aircraft":
+                                vehicles.add(new Aircraft(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), Integer.parseInt(parameters.get(5)), Integer.parseInt(parameters.get(6)), parameters.get(7), parameters.get(8)));
+                                System.out.println("The aircraft was successfully added to the system.");
+                                break;
+                            case "helicopter":
+                                vehicles.add(new Helicopter(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), Integer.parseInt(parameters.get(5)), parameters.get(6)));
+                                System.out.println("The helicopter was successfully added to the system.");
+                                break;
+                        }
+                    }catch(NumberFormatException e){
+                        System.out.println("The vehicle wasn't added to the system, because you didn't put a number (an integer) in a statement that you should put.");
                     }
                     System.out.println();
                     break;
