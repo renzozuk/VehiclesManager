@@ -1,11 +1,17 @@
 package entities;
 
+import java.util.Date;
+
 public abstract class Vehicle {
     protected String name;
     protected String color;
     protected int weight;
     protected int maxSpeed;
-    protected String introducedIn;
+    protected Date introducedIn;
+
+    public Vehicle(String name, String color, int weight, int maxSpeed, Date introducedIn){
+        this.name = name; this.color = color; this.weight = weight; this.maxSpeed = maxSpeed; this.introducedIn = introducedIn;
+    }
 
     public abstract void Accelerate();
 
@@ -25,7 +31,7 @@ public abstract class Vehicle {
         return this.maxSpeed;
     }
 
-    public String getIntroducedIn(){
+    public Date getIntroducedIn(){
         return this.introducedIn;
     }
 }

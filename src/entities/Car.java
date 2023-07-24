@@ -1,12 +1,10 @@
 package entities;
 
+import java.util.Date;
+
 public class Car extends LandBased{
-    public Car(String name, String color, int weight, int maxSpeed, String introducedIn){
-        this.name = name;
-        this.color = color;
-        this.weight = weight;
-        this.maxSpeed = maxSpeed;
-        this.introducedIn = introducedIn;
+    public Car(String name, String color, int weight, int maxSpeed, Date introducedIn){
+        super(name, color, weight, maxSpeed, introducedIn);
     }
 
     @Override

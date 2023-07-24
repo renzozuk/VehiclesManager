@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Date;
+
 public class Aircraft extends Airborne{
     enum Body{
         NarrowBody,
@@ -8,23 +10,25 @@ public class Aircraft extends Airborne{
     private Body bodyModel;
     private int autonomy;
 
-    public Aircraft(String name, String color, int weight, int maxSpeed, int maxAltitude, int autonomy, String introducedIn){
-        this.name = name;
+    public Aircraft(String name, String color, int weight, int maxSpeed, int maxAltitude, int autonomy, Date introducedIn){
+        super(name, color, weight, maxSpeed, maxAltitude, introducedIn);
+        /*this.name = name;
         this.color = color;
         this.weight = weight;
         this.maxSpeed = maxSpeed;
-        this.maxAltitude = maxAltitude;
+        this.maxAltitude = maxAltitude;*/
         this.autonomy = autonomy;
         bodyModel = Body.NarrowBody;
-        this.introducedIn = introducedIn;
+        //this.introducedIn = introducedIn;
     }
 
-    public Aircraft(String name, String color, int weight, int maxSpeed, int maxAltitude, int autonomy, String body, String introducedIn){
-        this.name = name;
+    public Aircraft(String name, String color, int weight, int maxSpeed, int maxAltitude, int autonomy, String body, Date introducedIn){
+        super(name, color, weight, maxSpeed, maxAltitude, introducedIn);
+        /*this.name = name;
         this.color = color;
         this.weight = weight;
         this.maxSpeed = maxSpeed;
-        this.maxAltitude = maxAltitude;
+        this.maxAltitude = maxAltitude;*/
         this.autonomy = autonomy;
         switch(body){
             case "WideBody":
@@ -34,7 +38,7 @@ public class Aircraft extends Airborne{
                 bodyModel = Body.NarrowBody;
                 break;
         }
-        this.introducedIn = introducedIn;
+        //this.introducedIn = introducedIn;
     }
 
     @Override

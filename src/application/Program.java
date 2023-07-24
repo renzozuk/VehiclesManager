@@ -3,6 +3,9 @@ package application;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import entities.Airborne;
 import entities.Aircraft;
@@ -30,15 +33,16 @@ public class Program {
         System.out.print(type + "\nName: " + name + "\nColor: " + color + "\nWeight: " + weight + "kg\nMaximum speed: " + maxSpeed + "km/h\n");
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
+        final DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         ArrayList<Vehicle> vehicles = new ArrayList<>();
-        vehicles.add(new Aircraft("Boeing 737-800 Next Generation", "white", 41413, 946, 41000, 7130, "31/07/1997"));
-        vehicles.add(new Car("Lamborghini Miura", "red", 1125, 276, "1967"));
-        vehicles.add(new Aircraft("Airbus A320NEO", "white", 41004, 871, 39000, 6800, "25/09/2014"));
-        vehicles.add(new Car("5th gen Camaro", "yellow", 1700, 296, "16/03/2009"));
-        vehicles.add(new Helicopter("Sikorsky S-97 Raider", "black", 4057, 407, 10000, "22/05/2015"));
-        vehicles.add(new Motorcycle("Harley-Davidson XR-750", "black", 134, 185, "1970"));
-        vehicles.add(new Aircraft("Boeing 777-300ER", "light gray", 167800, 950, 42400, 17600, "WideBody", "07/06/1995"));
+        vehicles.add(new Aircraft("Boeing 737-800 Next Generation", "white", 41413, 946, 41000, 7130, df.parse("31/07/1997")));
+        vehicles.add(new Car("Lamborghini Miura", "red", 1125, 276, df.parse("01/01/1967")));
+        vehicles.add(new Aircraft("Airbus A320NEO", "white", 41004, 871, 39000, 6800, df.parse("25/09/2014")));
+        vehicles.add(new Car("5th gen Camaro", "yellow", 1700, 296, df.parse("16/03/2009")));
+        vehicles.add(new Helicopter("Sikorsky S-97 Raider", "black", 4057, 407, 10000, df.parse("22/05/2015")));
+        vehicles.add(new Motorcycle("Harley-Davidson XR-750", "black", 134, 185, df.parse("01/01/1970")));
+        vehicles.add(new Aircraft("Boeing 777-300ER", "light gray", 167800, 950, 42400, 17600, "WideBody", df.parse("07/06/1995")));
         showInstructions();
         Scanner sc = new Scanner(System.in); int choice; ArrayList<String> parameters = new ArrayList<>();
         do{
@@ -101,19 +105,19 @@ public class Program {
                     try{
                         switch(parameters.get(0).toLowerCase()){
                             case "car":
-                                vehicles.add(new Car(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), parameters.get(5)));
+                                vehicles.add(new Car(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), df.parse(parameters.get(5))));
                                 System.out.println("The car was successfully added to the system.");
                                 break;
                             case "motorcycle":
-                                vehicles.add(new Motorcycle(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), parameters.get(5)));
+                                vehicles.add(new Motorcycle(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), df.parse(parameters.get(5))));
                                 System.out.println("The motorcycle was successfully added to the system.");
                                 break;
                             case "aircraft":
-                                vehicles.add(new Aircraft(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), Integer.parseInt(parameters.get(5)), Integer.parseInt(parameters.get(6)), parameters.get(7), parameters.get(8)));
+                                vehicles.add(new Aircraft(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), Integer.parseInt(parameters.get(5)), Integer.parseInt(parameters.get(6)), parameters.get(7), df.parse(parameters.get(8))));
                                 System.out.println("The aircraft was successfully added to the system.");
                                 break;
                             case "helicopter":
-                                vehicles.add(new Helicopter(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), Integer.parseInt(parameters.get(5)), parameters.get(6)));
+                                vehicles.add(new Helicopter(parameters.get(1), parameters.get(2), Integer.parseInt(parameters.get(3)), Integer.parseInt(parameters.get(4)), Integer.parseInt(parameters.get(5)), df.parse(parameters.get(6))));
                                 System.out.println("The helicopter was successfully added to the system.");
                                 break;
                         }
@@ -124,13 +128,17 @@ public class Program {
                     break;
                 case 3:
                     for (Vehicle vehicle: vehicles) {
-                        showGeneralInformation(vehicle.getClass().getSimpleName().toUpperCase(), vehicle.getName(), vehicle.getColor(), vehicle.getWeight(), vehicle.getWeight());
+                        showGeneralInformation(vehicle.getClass().getSimpleName().toUpperCase(), vehicle.getName(), vehicle.getColor(), vehicle.getWeight(), vehicle.getMaxSpeed());
                         if(vehicle instanceof Airborne){
                             System.out.println("Maximum altitude: " + ((Airborne) vehicle).getMaxAltitude() + "ft");
-                            System.out.println("First flight in: " + vehicle.getIntroducedIn());
+                            System.out.print("First flight in: ");
                         }else{
-                            System.out.println("Introduced in: " + vehicle.getIntroducedIn());
+                            System.out.print("Introduced in: ");
                         }
+                        if(vehicle.getIntroducedIn().getDate() != 1 && vehicle.getIntroducedIn().getMonth() != 1){
+                            System.out.print(vehicle.getIntroducedIn().getDate() + "/" + vehicle.getIntroducedIn().getMonth() + "/");
+                        }
+                        System.out.print(vehicle.getIntroducedIn().getYear()+1900 + "\n");
                         if(vehicle instanceof Aircraft){
                             System.out.println("Flight autonomy: " + ((Aircraft) vehicle).getAutonomy() + "km");
                             System.out.println("Body model: " + ((Aircraft) vehicle).getBody());
