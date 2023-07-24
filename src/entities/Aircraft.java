@@ -12,23 +12,12 @@ public class Aircraft extends Airborne{
 
     public Aircraft(String name, String color, int weight, int maxSpeed, int maxAltitude, int autonomy, Date introducedIn){
         super(name, color, weight, maxSpeed, maxAltitude, introducedIn);
-        /*this.name = name;
-        this.color = color;
-        this.weight = weight;
-        this.maxSpeed = maxSpeed;
-        this.maxAltitude = maxAltitude;*/
         this.autonomy = autonomy;
         bodyModel = Body.NarrowBody;
-        //this.introducedIn = introducedIn;
     }
 
     public Aircraft(String name, String color, int weight, int maxSpeed, int maxAltitude, int autonomy, String body, Date introducedIn){
         super(name, color, weight, maxSpeed, maxAltitude, introducedIn);
-        /*this.name = name;
-        this.color = color;
-        this.weight = weight;
-        this.maxSpeed = maxSpeed;
-        this.maxAltitude = maxAltitude;*/
         this.autonomy = autonomy;
         switch(body){
             case "WideBody":
@@ -38,7 +27,6 @@ public class Aircraft extends Airborne{
                 bodyModel = Body.NarrowBody;
                 break;
         }
-        //this.introducedIn = introducedIn;
     }
 
     @Override
@@ -51,7 +39,6 @@ public class Aircraft extends Airborne{
     }
 
     public String getBody(){
-        //return String.valueOf(this.bodyModel);
         if(this.bodyModel == Body.NarrowBody){
             return "Narrow Body";
         }else if(this.bodyModel == Body.WideBody){

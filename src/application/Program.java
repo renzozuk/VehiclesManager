@@ -68,8 +68,6 @@ public class Program {
                     }while(!(parameters.get(0).toLowerCase().equals("car")) && !(parameters.get(0).toLowerCase().equals("motorcycle")) && !(parameters.get(0).toLowerCase().equals("aircraft")) && !(parameters.get(0).toLowerCase().equals("helicopter")));
                     System.out.print("Insert the name of the vehicle: "); parameters.add(sc.nextLine());
                     System.out.print("Insert the color of the vehicle: "); parameters.add(sc.nextLine());
-                    /*do{
-                    }while(!(parameters.get(parameters.size()-1).startsWith("0")) && !(parameters.get(parameters.size()-1).startsWith("1")) && !(parameters.get(parameters.size()-1).startsWith("2")) && !(parameters.get(parameters.size()-1).startsWith("3")) && !(parameters.get(parameters.size()-1).startsWith("4")) && !(parameters.get(parameters.size()-1).startsWith("5")) && !(parameters.get(parameters.size()-1).startsWith("6")) && !(parameters.get(parameters.size()-1).startsWith("7")) && !(parameters.get(parameters.size()-1).startsWith("8")) && !(parameters.get(parameters.size()-1).startsWith("9")));*/
                     System.out.print("Insert the weight of the vehicle (in kg): ");
                     if(parameters.size() == 3){
                         parameters.add(sc.nextLine());
