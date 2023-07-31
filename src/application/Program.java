@@ -1,5 +1,6 @@
 package application;
 
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.IOException;
@@ -18,25 +19,8 @@ import static entities.Body.NARROW_BODY;
 import static entities.Body.WIDE_BODY;
 
 public class Program {
-    static void clrsrc(){
-        try {
-            if (System.getProperty("os.name").contains("Windows")){
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            }else{
-                Runtime.getRuntime().exec("clear");
-            }
-        } catch (IOException | InterruptedException ex) {}
-    }
-
-    static void showInstructions(){
-        System.out.print("1 - Show the instructions of the program\n2 - Add a Vehicle (Car, Motorcycle, Aircraft or Helicopter)\n3 - Show all the vehicles\n0 - Exit the program\n\n");
-    }
-
-    static void showGeneralInformation(String type, String name, String color, int weight, int maxSpeed){
-        System.out.print(type + "\nName: " + name + "\nColor: " + color + "\nWeight: " + weight + "kg\nMaximum speed: " + maxSpeed + "km/h\n");
-    }
-
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws ParseException {
+        Locale.setDefault(Locale.US);
         final DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         vehicles.add(new Aircraft("Boeing 737-800 Next Generation", "white", 41413, 946, 41000, 7130, df.parse("31/07/1997")));
@@ -46,7 +30,7 @@ public class Program {
         vehicles.add(new Helicopter("Sikorsky S-97 Raider", "black", 4057, 407, 10000, df.parse("22/05/2015")));
         vehicles.add(new Motorcycle("Harley-Davidson XR-750", "black", 134, 185, df.parse("01/01/1970")));
         vehicles.add(new Aircraft("Boeing 777-300ER", "light gray", 167800, 950, 42400, 17600, WIDE_BODY, df.parse("07/06/1995")));
-        showInstructions();
+        UI.clearScreen(); UI.showInstructions();
         Scanner sc = new Scanner(System.in); int choice; ArrayList<String> parameters = new ArrayList<>();
         do{
             parameters.clear();
@@ -55,10 +39,10 @@ public class Program {
                 choice = sc.nextInt();
             }while(choice > 3 || choice < 0);
             sc.nextLine();
-            clrsrc();
+            UI.clearScreen();
             switch(choice){
                 case 1:
-                    showInstructions();
+                    UI.showInstructions();
                     break;
                 case 2:
                     do{
@@ -139,7 +123,7 @@ public class Program {
                     break;
                 case 3:
                     for (Vehicle vehicle: vehicles) {
-                        showGeneralInformation(vehicle.getClass().getSimpleName().toUpperCase(), vehicle.getName(), vehicle.getColor(), vehicle.getWeight(), vehicle.getMaxSpeed());
+                        UI.showGeneralInformation(vehicle.getClass().getSimpleName().toUpperCase(), vehicle.getName(), vehicle.getColor(), vehicle.getWeight(), vehicle.getMaxSpeed());
                         if(vehicle instanceof Airborne){
                             System.out.println("Maximum altitude: " + ((Airborne) vehicle).getMaxAltitude() + "ft");
                             System.out.print("First flight in: ");
