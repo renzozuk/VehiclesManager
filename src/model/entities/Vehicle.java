@@ -1,4 +1,4 @@
-package entities;
+package model.entities;
 
 import java.util.Date;
 
@@ -13,7 +13,7 @@ public abstract class Vehicle {
         this.name = name; this.color = color; this.weight = weight; this.maxSpeed = maxSpeed; this.introducedIn = introducedIn;
     }
 
-    public abstract void Accelerate();
+    public abstract String accelerate();
 
     public String getName(){
         return this.name;
@@ -33,5 +33,10 @@ public abstract class Vehicle {
 
     public Date getIntroducedIn(){
         return this.introducedIn;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + "\nColor: " + color + "\nWeight: " + weight + "kg\nMaximum speed: " + maxSpeed + "km/h\n";
     }
 }

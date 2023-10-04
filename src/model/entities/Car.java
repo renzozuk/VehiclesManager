@@ -1,4 +1,4 @@
-package entities;
+package model.entities;
 
 import java.util.Date;
 
@@ -8,7 +8,12 @@ public class Car extends LandBased{
     }
 
     @Override
-    public void Accelerate() {
-        System.out.println("Vrum vrum.");
+    public String accelerate() {
+        return "Vrum vrum." + "\n";
+    }
+
+    @Override
+    public String toString(){
+        return super.toString();
     }
 }

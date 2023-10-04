@@ -1,4 +1,6 @@
-package entities;
+package model.entities;
+
+import model.entities.enums.Body;
 
 import java.util.Date;
 
@@ -19,8 +21,8 @@ public class Aircraft extends Airborne{
     }
 
     @Override
-    public void Accelerate() {
-        System.out.println("The " + this.name + " is patiently flying through the sky...");
+    public String accelerate() {
+        return "The " + this.name + " is patiently flying through the sky..." + "\n";
     }
 
     public int getFlightAutonomy(){
@@ -34,5 +36,10 @@ public class Aircraft extends Airborne{
             return "Wide Body";
         }
         return "";
+    }
+
+    @Override
+    public String toString(){
+        return super.toString() + "Body model: " + getBody() + "\nFlight autonomy: " + flightAutonomy + "km\n";
     }
 }

@@ -1,4 +1,4 @@
-package entities;
+package model.entities;
 
 import java.util.Date;
 
@@ -12,5 +12,9 @@ public abstract class Airborne extends Vehicle {
 
     public int getMaxAltitude(){
         return this.maxAltitude;
+    }
+
+    public String toString(){
+        return super.toString() + "Maximum altitude: " + maxAltitude + "ft\n";
     }
 }

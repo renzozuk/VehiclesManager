@@ -1,4 +1,4 @@
-package entities;
+package model.entities;
 
 import java.util.Date;
 
@@ -8,7 +8,12 @@ public class Helicopter extends Airborne {
     }
 
     @Override
-    public void Accelerate() {
-        System.out.println("The " + this.name + " is flying through the sky...");
+    public String accelerate() {
+        return "The " + this.name + " is flying through the sky..." + "\n";
+    }
+
+    @Override
+    public String toString(){
+        return super.toString();
     }
 }

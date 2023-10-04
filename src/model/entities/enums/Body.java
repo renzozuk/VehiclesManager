@@ -1,4 +1,4 @@
-package entities;
+package model.entities.enums;
 
 public enum Body {
     NARROW_BODY,
